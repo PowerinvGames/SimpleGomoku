@@ -1,8 +1,45 @@
-# 五子棋游戏 (Gomoku)
+![game_ui](./resources/doc_imgs/game_ui.jpg)
+
+<div align="center">
+
+<h1>简易五子棋AI游戏</h1>
+
+<img alt="Python-3.7+-blue" src="https://img.shields.io/badge/Python-3.7+-blue.svg" />
+<img alt="Pygame-2.5.0-green" src="https://img.shields.io/badge/Arcade-2.6.17-green.svg" />
+<img alt="MCP-Protocol-orange" src="https://img.shields.io/badge/MCP-Protocol-orange.svg" />
+<img alt="License-MIT" src="https://img.shields.io/badge/License-MIT-brightgreen.svg" />
+<img alt="AI_Generated" src="https://img.shields.io/badge/%F0%9F%A4%96_AI_Generated-99%25-ff69b4.svg" />
+<img alt="stars" src="https://img.shields.io/github/stars/PowerinvGames/SimpleGomoku?style=social" />
+<img alt="forks" src="https://img.shields.io/github/forks/PowerinvGames/SimpleGomoku?style=social" />
+
+</div>
+
+---
+
+# 📋 一、项目概述
 
 一个使用Python和Arcade库开发的五子棋游戏，采用Clean Code架构设计，集成MCP服务器支持LLM对战。
 
-## 功能特点
+> 🚨 **重要说明**
+> 
+> **整个项目99%的代码和文档都是由AI生成的！** 🤖 
+> 
+> 本项目是一个AI代码生成能力的完整展示，由DeepSeek AI模型（DeepSeek-V3.2）通过对话式开发完成。所有代码生成过程都记录在 [`CodeGeneration.md`](./CodeGeneration.md) 文件中，包括：
+> 
+> - 完整的项目架构设计
+> - 分层代码实现（UI、逻辑、配置、MCP服务器）
+> - 代码重构和优化过程
+> - 问题诊断和修复
+> - MCP服务器集成
+> 
+> 这个项目证明了AI在软件开发中的强大能力，能够：
+> - 理解复杂的架构要求
+> - 实现Clean Code标准
+> - 进行代码重构和优化
+> - 集成现代技术栈（MCP服务器）
+> - 解决实际问题
+
+## 1.1  功能特点
 
 - 完整的五子棋游戏逻辑
 - 美观的中文界面
@@ -13,45 +50,47 @@
 - **集成MCP服务器，支持SSE方式对接LLM进行对战**
 - **游戏窗口与MCP服务器生命周期绑定**
 
-## 项目结构
+## 1.2  项目结构
 
-```
+```text
 SimpleGomoku/
-├── python/                    # 源代码目录
-│   ├── main.py               # 程序入口点
-│   ├── Config.py             # 配置管理
-│   ├── Logger.py             # 日志管理
-│   ├── Board.py              # 棋盘逻辑
-│   ├── GameLogic.py          # 游戏逻辑
-│   ├── GameWindow.py         # 游戏窗口
-│   ├── models/               # 数据模型
-│   │   ├── __init__.py
+├── python/                           # 源代码目录
+│   ├── main.py                       # 程序入口点
+│   ├── core/                         # 游戏主要逻辑
+│   │   ├── Board.py
+│   │   └── GameLogic.py
+│   ├── models/                       # 数据模型
 │   │   └── GameModels.py
-│   ├── ui/                   # UI组件
-│   │   ├── __init__.py
-│   │   ├── BoardView.py
-│   │   ├── Button.py
-│   │   └── StatusPanel.py
-│   └── mcp/                  # MCP服务器层
-│       ├── __init__.py
-│       ├── McpServer.py      # MCP服务器管理器
-│       └── McpClientExample.py  # MCP客户端示例
-├── resources/                # 资源文件
+│   ├── ui/                           # UI层
+│   │   ├── GameWindow.py             # 游戏窗口
+│   │   └── components/               # UI组件
+│   │       ├── BoardView.py
+│   │       ├── Button.py
+│   │       └── StatusPanel.py
+│   ├── util/                         # 工具类
+│   │   ├── Config.py                 # 配置管理
+│   │   └── Logger.py                 # 日志管理
+│   └── server/                       # MCP服务器层
+│       └── McpServer.py              # MCP服务器管理器
+├── resources/                        # 资源文件
 │   ├── HarmonyOS_SansSC_Regular.ttf  # 中文字体
-│   └── config.properties     # 配置文件
-├── requirements.txt          # 项目依赖
-└── README.md                # 说明文档
+│   ├── LICENSE.txt                   # 中文字体许可证
+│   └── config.properties             # 配置文件
+├── requirements.txt                  # 项目依赖
+├── CodeGeneration.md                 # LLM代码生成过程
+├── README.md                         # 说明文档
+└── LICENSE                           # 许可证
 ```
 
-## 安装和运行
+# ⚙️ 二、安装和运行
 
-### 1. 安装依赖
+## 2.1  安装依赖
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 2. 运行游戏
+## 2.2  运行游戏
 
 ```bash
 cd python
@@ -64,7 +103,7 @@ python main.py
 python python/main.py
 ```
 
-### 3. MCP服务器
+## 2.3  MCP服务器
 
 游戏启动时会自动启动MCP服务器（端口60000），支持SSE方式对接。LLM可以通过以下方式与游戏交互：
 
@@ -87,7 +126,9 @@ http://localhost:60000/sse
 python python/server/McpClientExample.py
 ```
 
-## 游戏操作
+# 🎯 三、游戏操作
+
+## 3.1  操作
 
 - **鼠标点击**：在棋盘上落子
 - **新游戏**：开始全新的游戏
@@ -95,14 +136,16 @@ python python/server/McpClientExample.py
 - **悔棋**：撤销上一步操作
 - **退出游戏**：关闭游戏窗口
 
-### 快捷键
+## 3.2  快捷键
 
 - **ESC**：退出游戏
 - **R**：重新开始游戏
 - **N**：新游戏
 - **Ctrl+Z**：悔棋
 
-## 配置说明
+# ⚙️ 四、配置说明
+
+## 4.1  配置文件
 
 游戏的所有可配置项都在 `resources/config.properties` 文件中，包括：
 
@@ -115,7 +158,7 @@ python python/server/McpClientExample.py
 
 修改配置文件后，重启游戏即可生效。
 
-## 架构设计
+## 4.2  架构设计
 
 项目采用分层架构设计：
 
@@ -136,9 +179,9 @@ python python/server/McpClientExample.py
 - **UI操作和MCP操作调用相同的游戏逻辑方法（源码级复用）**
 - **游戏窗口与MCP服务器生命周期绑定**
 
-## 开发说明
+# 💻 五、开发说明
 
-### 代码规范
+## 5.1  代码规范
 
 - 遵循Clean Code原则
 - 使用大驼峰命名法（类名）
@@ -146,7 +189,7 @@ python python/server/McpClientExample.py
 - 所有import从python目录开始
 - 使用Logger代替print
 
-### 扩展游戏
+## 5.2  扩展游戏
 
 1. **添加新功能**：在相应的层中添加代码
 2. **修改UI**：修改ui目录下的组件
@@ -154,7 +197,7 @@ python python/server/McpClientExample.py
 4. **添加新游戏模式**：扩展GameLogic类
 5. **扩展MCP接口**：在`McpServer.py`中添加新的工具函数
 
-### MCP服务器开发
+## 5.3  MCP服务器开发
 
 MCP服务器实现了严格的代码分层：
 
@@ -177,6 +220,23 @@ def new_tool(param1: str, param2: int) -> Dict[str, Any]:
         return {"success": False, "error": str(e)}
 ```
 
-## 许可证
+# 📜 六、许可证
 
-本项目仅供学习使用，遵循MIT许可证。
+本项目仅供学习使用，遵循MIT许可证 - 详见 [LICENSE](./LICENSE) 文件。
+
+# 🤝 七、贡献指南
+
+1. Fork 本仓库
+2. 创建功能分支：`git checkout -b feature/新功能`
+3. 提交更改：`git commit -m '添加新功能'`
+4. 推送到分支：`git push origin feature/新功能`
+5. 提交 Pull Request
+
+# 📞 八、联系方式
+
+如有问题或建议，请提交GitHub Issue。
+
+---
+
+![logo](https://img.shields.io/badge/GitHub-PowerinvGames/SimpleGomoku-181717?style=for-the-badge&logo=github)
+![logo](https://img.shields.io/badge/Generated_by-DeepSeek_AI-06c755?style=for-the-badge&logo=ai)
