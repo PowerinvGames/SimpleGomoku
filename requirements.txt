@@ -1,2 +1,4 @@
 # 五子棋游戏依赖
 arcade>=2.6.17
+fastmcp>=0.1.0
+sse-starlette>=1.6.5

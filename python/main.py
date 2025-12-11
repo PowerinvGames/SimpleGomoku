@@ -10,15 +10,20 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from python.util.Logger import logger
 from python.ui.GameWindow import GameWindow
+from python.mcp.McpServer import McpServer
 
 
 def main():
     """主函数"""
     try:
         logger.info("启动五子棋游戏...")
+
+        # 初始化MCP服务器
+        mcp_server = McpServer(game_logic)
+        mcp_server.start()
         
         # 创建并运行游戏窗口
-        window = GameWindow()
+        GameWindow(mcp_server)
         
         logger.info("游戏窗口创建成功，开始运行...")
         arcade.run()

@@ -4,18 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb4c73b5-8a18-46be-a3b4-56a5a0f67872" name="更改" comment="">
+    <list default="true" id="eb4c73b5-8a18-46be-a3b4-56a5a0f67872" name="更改" comment="Reflect, reallocate code directory">
+      <change afterPath="$PROJECT_DIR$/python/mcp/McpServer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/Board.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/core/Board.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/Config.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/util/Config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/GameLogic.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/core/GameLogic.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/GameWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/ui/GameWindow.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/Logger.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/util/Logger.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/python/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/models/GameModels.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/models/GameModels.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/ui/BoardView.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/ui/components/BoardView.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/ui/Button.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/ui/components/Button.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/ui/StatusPanel.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/ui/components/StatusPanel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/ui/GameWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/ui/GameWindow.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/resources/config.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,6 +108,15 @@
       <updated>1765293195698</updated>
       <workItem from="1765293196726" duration="16532000" />
     </task>
+    <task id="LOCAL-00001" summary="Reflect, reallocate code directory">
+      <option name="closed" value="true" />
+      <created>1765471913206</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1765471913206</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -128,8 +133,12 @@
       </map>
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Reflect, reallocate code directory" />
+    <option name="LAST_COMMIT_MESSAGE" value="Reflect, reallocate code directory" />
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/SimpleGomoku$main.coverage" NAME="main 覆盖结果" MODIFIED="1765471797859" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python" />
+    <SUITE FILE_PATH="coverage/SimpleGomoku$main.coverage" NAME="main 覆盖结果" MODIFIED="1765473825949" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python" />
     <SUITE FILE_PATH="coverage/SimpleGomoku$main_with_mcp.coverage" NAME="main_with_mcp 覆盖结果" MODIFIED="1765471460583" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python" />
   </component>
 </project>

@@ -1,8 +1,10 @@
 """
 游戏主窗口
-整合所有UI组件，管理游戏界面
+整合所有UI组件，管理游戏界面和MCP服务器
 """
 import arcade
+
+from python.mcp.McpServer import McpServer
 from python.util.Config import config
 from python.util.Logger import logger
 from python.core.GameLogic import GameLogic
@@ -15,7 +17,7 @@ from python.ui.components.StatusPanel import StatusPanel
 class GameWindow(arcade.Window):
     """游戏主窗口类"""
     
-    def __init__(self):
+    def __init__(self, mcp_server: McpServer):
         """初始化游戏窗口"""
         # 从配置获取窗口设置
         width = config.get("window_width", 800)
@@ -23,7 +25,12 @@ class GameWindow(arcade.Window):
         title = config.get("window_title", "五子棋")
         self.bg_color = config.get("window_bg_color", (255, 255, 255))
         
-        super().__init__(width, height, title)
+        super().__init__(width, height, title.format(
+            http_host="",
+            mcp_host=mcp_server.get_server_info().get("url", "")
+        ))
+
+        self.mcp_server = mcp_server
         
         # 初始化游戏逻辑
         self.game_logic = GameLogic()
@@ -266,3 +273,17 @@ class GameWindow(arcade.Window):
         """更新游戏状态"""
         # 这里可以添加动画或其他实时更新逻辑
         pass
+    
+    def on_close(self):
+        """窗口关闭时调用"""
+        logger.info("游戏窗口正在关闭...")
+        
+        # 停止MCP服务器
+        if self.mcp_server and self.mcp_server.is_running():
+            self.mcp_server.stop()
+            logger.info("MCP服务器已停止")
+        
+        # 调用父类的关闭方法
+        super().on_close()
+        
+        logger.info("游戏窗口已关闭")
