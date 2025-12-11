@@ -84,7 +84,7 @@ http://localhost:8000/sse
 
 **示例客户端：**
 ```bash
-python python/mcp/McpClientExample.py
+python python/server/McpClientExample.py
 ```
 
 ## 游戏操作

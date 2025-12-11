@@ -2,8 +2,10 @@
 棋盘视图组件
 负责棋盘的绘制和交互
 """
+from typing import Callable, Optional
+
 import arcade
-from typing import Optional, Callable
+
 from python.models.GameModels import Player, Position
 from python.util.Config import config
 from python.util.Logger import logger

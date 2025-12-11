@@ -3,7 +3,7 @@
 集中管理所有可配置项，包括界面颜色、尺寸、文本等
 """
 import os
-from typing import Dict, Any
+from typing import Any, Dict
 
 
 class Config:

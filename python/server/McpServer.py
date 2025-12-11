@@ -2,24 +2,25 @@
 MCP服务器管理器
 管理MCP服务器的生命周期和与游戏逻辑的交互
 """
-import asyncio
 import threading
 import time
-from typing import Optional, Dict, Any, List
+from typing import Any, Dict
+
 from fastmcp import FastMCP
+
+from python.models.GameModels import GameState, Player
 from python.util.Logger import logger
-from python.models.GameModels import Player, Position, GameState, GameResult
 
 
 class McpServer:
     """MCP服务器管理器"""
     
-    def __init__(self, game_logic):
+    def __init__(self, game_logic=None):
         """
         初始化MCP服务器
         
         Args:
-            game_logic: 游戏逻辑实例
+            game_logic: 游戏逻辑实例（可选，可以稍后设置）
         """
         self.game_logic = game_logic
         self.mcp = None
@@ -27,10 +28,12 @@ class McpServer:
         self.server_running = False
         self.server_port = 8000  # 默认端口
         
-        # 注册工具
-        self._register_tools()
-        
-        logger.info("MCP服务器管理器初始化完成")
+        # 如果提供了game_logic，注册工具
+        if game_logic:
+            self._register_tools()
+            logger.info("MCP服务器管理器初始化完成（已设置游戏逻辑）")
+        else:
+            logger.info("MCP服务器管理器初始化完成（游戏逻辑未设置）")
     
     def _register_tools(self):
         """注册MCP工具"""
@@ -273,6 +276,16 @@ class McpServer:
     def is_running(self) -> bool:
         """检查MCP服务器是否在运行"""
         return self.server_running
+    
+    def set_game_logic(self, game_logic):
+        """设置游戏逻辑实例
+        
+        Args:
+            game_logic: 游戏逻辑实例
+        """
+        self.game_logic = game_logic
+        self._register_tools()
+        logger.info("游戏逻辑已设置到MCP服务器")
     
     def get_server_info(self) -> Dict[str, Any]:
         """获取服务器信息"""

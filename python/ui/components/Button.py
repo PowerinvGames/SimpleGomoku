@@ -1,8 +1,10 @@
 """
 按钮组件
 """
+from typing import Callable, Optional
+
 import arcade
-from typing import Optional, Callable
+
 from python.util.Config import config
 from python.util.Logger import logger
 

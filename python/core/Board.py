@@ -3,7 +3,8 @@
 管理棋盘状态、落子、胜负判断等核心逻辑
 """
 from typing import List, Optional, Tuple
-from python.models.GameModels import Player, Position, GameResult, GameSettings
+
+from python.models.GameModels import GameResult, GameSettings, Player, Position
 from python.util.Logger import logger
 
 

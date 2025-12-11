@@ -2,9 +2,9 @@
 游戏数据模型
 定义游戏中的核心数据结构和枚举
 """
-from enum import Enum
 from dataclasses import dataclass
-from typing import Tuple, List
+from enum import Enum
+from typing import List, Tuple
 
 
 class Player(Enum):

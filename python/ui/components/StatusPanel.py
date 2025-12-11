@@ -3,7 +3,8 @@
 显示游戏状态信息
 """
 import arcade
-from python.models.GameModels import Player, GameState
+
+from python.models.GameModels import GameState, Player
 from python.util.Config import config
 from python.util.Logger import logger
 

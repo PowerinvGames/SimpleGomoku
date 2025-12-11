@@ -4,36 +4,43 @@
 """
 import arcade
 
-from python.mcp.McpServer import McpServer
-from python.util.Config import config
-from python.util.Logger import logger
-from python.core.GameLogic import GameLogic
-from python.models.GameModels import GameState, GameResult, Position
+from python.server.McpServer import McpServer
+from python.models.GameModels import GameResult, GameState, Position
 from python.ui.components.BoardView import BoardView
 from python.ui.components.Button import Button
 from python.ui.components.StatusPanel import StatusPanel
+from python.util.Config import config
+from python.util.Logger import logger
 
 
 class GameWindow(arcade.Window):
     """游戏主窗口类"""
     
-    def __init__(self, mcp_server: McpServer):
-        """初始化游戏窗口"""
+    def __init__(self, game_logic, mcp_server: McpServer = None):
+        """初始化游戏窗口
+        
+        Args:
+            game_logic: 游戏逻辑实例
+            mcp_server: MCP服务器实例（可选）
+        """
         # 从配置获取窗口设置
         width = config.get("window_width", 800)
         height = config.get("window_height", 600)
         title = config.get("window_title", "五子棋")
         self.bg_color = config.get("window_bg_color", (255, 255, 255))
         
-        super().__init__(width, height, title.format(
-            http_host="",
-            mcp_host=mcp_server.get_server_info().get("url", "")
-        ))
+        # 构建窗口标题
+        title_text = title
+        if mcp_server:
+            mcp_url = mcp_server.get_server_info().get("url", "")
+            title_text = title.format(http_host="", mcp_host=mcp_url)
+        
+        super().__init__(width, height, title_text)
 
         self.mcp_server = mcp_server
         
-        # 初始化游戏逻辑
-        self.game_logic = GameLogic()
+        # 使用外部传入的游戏逻辑
+        self.game_logic = game_logic
         self.game_logic.set_event_handlers(
             on_state_change=self._on_game_state_change,
             on_move_made=self._on_move_made,
