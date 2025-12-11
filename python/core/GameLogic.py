@@ -27,6 +27,7 @@ class GameLogic:
         self.on_state_change: Optional[Callable[[GameState], None]] = None
         self.on_move_made: Optional[Callable[[Player, Position], None]] = None
         self.on_game_over: Optional[Callable[[GameResult], None]] = None
+        self.on_force_redraw: Optional[Callable[[], None]] = None
         
         logger.info("游戏逻辑初始化完成")
     
@@ -39,6 +40,8 @@ class GameLogic:
         
         if self.on_state_change:
             self.on_state_change(self.game_state)
+        if self.on_force_redraw:
+            self.on_force_redraw()
     
     def restart_game(self):
         """重新开始游戏"""
@@ -49,6 +52,8 @@ class GameLogic:
         
         if self.on_state_change:
             self.on_state_change(self.game_state)
+        if self.on_force_redraw:
+            self.on_force_redraw()
     
     def make_move(self, row: int, col: int) -> bool:
         """
@@ -76,6 +81,8 @@ class GameLogic:
             # 检查游戏是否结束
             if self.board.is_game_over:
                 self._handle_game_over()
+        if self.on_force_redraw:
+            self.on_force_redraw()
         
         return success
     
@@ -103,6 +110,8 @@ class GameLogic:
         # 通知游戏结束
         if self.on_game_over and game_result:
             self.on_game_over(game_result)
+        if self.on_force_redraw:
+            self.on_force_redraw()
     
     def undo_move(self) -> bool:
         """
@@ -126,6 +135,8 @@ class GameLogic:
             # 通知状态变化
             if self.on_state_change:
                 self.on_state_change(self.game_state)
+        if self.on_force_redraw:
+            self.on_force_redraw()
         
         return success
     
@@ -160,7 +171,8 @@ class GameLogic:
     def set_event_handlers(self,
                           on_state_change: Optional[Callable[[GameState], None]] = None,
                           on_move_made: Optional[Callable[[Player, Position], None]] = None,
-                          on_game_over: Optional[Callable[[GameResult], None]] = None):
+                          on_game_over: Optional[Callable[[GameResult], None]] = None,
+                          on_force_redraw: Optional[Callable[[], None]] = None):
         """
         设置事件处理器
         
@@ -168,10 +180,12 @@ class GameLogic:
             on_state_change: 游戏状态变化回调
             on_move_made: 落子回调
             on_game_over: 游戏结束回调
+            on_force_redraw: 强制重绘回调
         """
         self.on_state_change = on_state_change
         self.on_move_made = on_move_made
         self.on_game_over = on_game_over
+        self.on_force_redraw = on_force_redraw
         
         logger.info("事件处理器已设置")
     

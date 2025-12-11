@@ -32,6 +32,9 @@ class Logger:
         console_handler = logging.StreamHandler(sys.stdout)
         console_handler.setLevel(logging.DEBUG)
         
+        # 设置编码为UTF-8
+        console_handler.setStream(sys.stdout)
+        
         # 设置日志格式
         formatter = logging.Formatter(
             '%(asctime)s - %(name)s - %(levelname)s - %(message)s',

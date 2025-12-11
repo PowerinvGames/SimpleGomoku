@@ -66,11 +66,11 @@ python python/main.py
 
 ### 3. MCP服务器
 
-游戏启动时会自动启动MCP服务器（端口8000），支持SSE方式对接。LLM可以通过以下方式与游戏交互：
+游戏启动时会自动启动MCP服务器（端口60000），支持SSE方式对接。LLM可以通过以下方式与游戏交互：
 
 **SSE连接地址：**
 ```
-http://localhost:8000/sse
+http://localhost:60000/sse
 ```
 
 **可用工具：**

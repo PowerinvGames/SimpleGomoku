@@ -9,7 +9,9 @@ from typing import Any, Dict
 from fastmcp import FastMCP
 
 from python.models.GameModels import GameState, Player
+from python.util.Config import config
 from python.util.Logger import logger
+from python.util.PortFinder import PortFinder
 
 
 class McpServer:
@@ -26,14 +28,31 @@ class McpServer:
         self.mcp = None
         self.server_thread = None
         self.server_running = False
-        self.server_port = 8000  # 默认端口
+        self.server_port = self._get_available_port()  # 自动获取可用端口
         
         # 如果提供了game_logic，注册工具
         if game_logic:
             self._register_tools()
-            logger.info("MCP服务器管理器初始化完成（已设置游戏逻辑）")
+            logger.info(f"MCP服务器管理器初始化完成（已设置游戏逻辑），端口: {self.server_port}")
         else:
-            logger.info("MCP服务器管理器初始化完成（游戏逻辑未设置）")
+            logger.info(f"MCP服务器管理器初始化完成（游戏逻辑未设置），端口: {self.server_port}")
+    
+    def _get_available_port(self) -> int:
+        """获取可用端口"""
+        # 从配置获取设置
+        min_port = config.get("mcp_server_min_port", 60000)
+        max_port = config.get("mcp_server_max_port", 65535)
+
+        # 自动查找可用端口
+        logger.info(f"自动查找可用端口，范围: {min_port}-{max_port}")
+        available_port = PortFinder.find_available_port(min_port, max_port)
+
+        if available_port is not None:
+            logger.info(f"找到可用端口: {available_port}")
+            return available_port
+        else:
+            logger.warning(f"在范围 {min_port}-{max_port} 中未找到可用端口")
+            return -1
     
     def _register_tools(self):
         """注册MCP工具"""
@@ -238,7 +257,7 @@ class McpServer:
             logger.info(f"启动MCP服务器，端口: {self.server_port}")
             
             # 运行MCP服务器
-            self.mcp.run(transport="sse", port=self.server_port, host="0.0.0.0")
+            self.mcp.run(transport="sse", port=self.server_port, host=config.get("mcp_server_host", "0.0.0.0"))
             
         except Exception as e:
             logger.error(f"MCP服务器运行失败: {e}")

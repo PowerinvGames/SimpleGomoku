@@ -4,8 +4,8 @@
 """
 import arcade
 
-from python.server.McpServer import McpServer
 from python.models.GameModels import GameResult, GameState, Position
+from python.server.McpServer import McpServer
 from python.ui.components.BoardView import BoardView
 from python.ui.components.Button import Button
 from python.ui.components.StatusPanel import StatusPanel
@@ -44,7 +44,8 @@ class GameWindow(arcade.Window):
         self.game_logic.set_event_handlers(
             on_state_change=self._on_game_state_change,
             on_move_made=self._on_move_made,
-            on_game_over=self._on_game_over
+            on_game_over=self._on_game_over,
+            on_force_redraw=self._force_redraw
         )
         
         # 字体路径
@@ -208,16 +209,28 @@ class GameWindow(arcade.Window):
         """处理游戏状态变化"""
         logger.info(f"游戏状态变化: {game_state.value}")
         self._update_status_panel()
+        # 如果游戏结束，也需要更新棋盘视图以显示高亮
+        if game_state in [GameState.BLACK_WIN, GameState.WHITE_WIN, GameState.DRAW]:
+            self._update_board_view()
+            # 强制重绘窗口
+            self._force_redraw()
     
     def _on_move_made(self, player, position: Position):
         """处理落子事件"""
         logger.info(f"落子: {player.name} at ({position.row}, {position.col})")
+        # 更新UI以反映游戏状态变化
+        self._update_board_view()
+        self._update_status_panel()
+        # 强制重绘窗口
+        self._force_redraw()
     
     def _on_game_over(self, game_result: GameResult):
         """处理游戏结束事件"""
         logger.info(f"游戏结束: {game_result}")
         self._update_board_view()
         self._update_status_panel()
+        # 强制重绘窗口
+        self._force_redraw()
     
     def on_draw(self):
         """绘制窗口内容"""
@@ -275,6 +288,12 @@ class GameWindow(arcade.Window):
         # Z键悔棋
         elif symbol == arcade.key.Z and modifiers & arcade.key.MOD_CTRL:
             self._on_undo_click()
+    
+    def _force_redraw(self):
+        """强制窗口重绘"""
+        # 在arcade中，可以通过设置一个标志来触发重绘
+        self._update_board_view()
+        self._update_status_panel()
     
     def on_update(self, delta_time: float):
         """更新游戏状态"""
