@@ -5,8 +5,8 @@
 import arcade
 from typing import Optional, Callable
 from python.models.GameModels import Player, Position
-from python.Config import config
-from python.Logger import logger
+from python.util.Config import config
+from python.util.Logger import logger
 
 
 class BoardView:

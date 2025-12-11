@@ -3,14 +3,13 @@
 整合所有UI组件，管理游戏界面
 """
 import arcade
-from typing import Optional
-from python.Config import config
-from python.Logger import logger
-from python.GameLogic import GameLogic
+from python.util.Config import config
+from python.util.Logger import logger
+from python.core.GameLogic import GameLogic
 from python.models.GameModels import GameState, GameResult, Position
-from python.ui.BoardView import BoardView
-from python.ui.Button import Button
-from python.ui.StatusPanel import StatusPanel
+from python.ui.components.BoardView import BoardView
+from python.ui.components.Button import Button
+from python.ui.components.StatusPanel import StatusPanel
 
 
 class GameWindow(arcade.Window):

@@ -4,7 +4,7 @@
 """
 from enum import Enum
 from dataclasses import dataclass
-from typing import Optional, Tuple, List
+from typing import Tuple, List
 
 
 class Player(Enum):
@@ -23,7 +23,7 @@ class Player(Enum):
     
     def get_color(self) -> Tuple[int, int, int]:
         """获取玩家对应的颜色"""
-        from python.Config import config
+        from python.util.Config import config
         
         if self == Player.BLACK:
             return config.get("black_piece_color", (0, 0, 0))

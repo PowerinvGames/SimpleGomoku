@@ -4,8 +4,8 @@
 """
 import arcade
 from python.models.GameModels import Player, GameState
-from python.Config import config
-from python.Logger import logger
+from python.util.Config import config
+from python.util.Logger import logger
 
 
 class StatusPanel:

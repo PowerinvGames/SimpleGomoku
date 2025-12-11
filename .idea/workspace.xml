@@ -5,25 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eb4c73b5-8a18-46be-a3b4-56a5a0f67872" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/SimpleGomoku.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python/Board.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python/Config.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python/GameLogic.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python/GameWindow.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python/Logger.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python/models/GameModels.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python/ui/BoardView.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python/ui/Button.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python/ui/StatusPanel.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/HarmonyOS_SansSC_Regular.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/config.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/Board.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/core/Board.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/Config.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/util/Config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/GameLogic.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/core/GameLogic.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/GameWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/ui/GameWindow.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/Logger.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/util/Logger.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/models/GameModels.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/models/GameModels.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/ui/BoardView.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/ui/components/BoardView.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/ui/Button.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/ui/components/Button.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/ui/StatusPanel.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/ui/components/StatusPanel.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,9 +25,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 7
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="36c5oUl6hSYrvYjbvbXXkgL7rCc" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -44,7 +36,8 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python.main.executor": "Debug",
+    "Python.main.executor": "Run",
+    "Python.main_with_mcp.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -63,6 +56,12 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\AProject\Python\GAME\SimpleGomoku\resources" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\AProject\Python\GAME\SimpleGomoku\python\util" />
+      <recent name="D:\AProject\Python\GAME\SimpleGomoku\python\core" />
+      <recent name="D:\AProject\Python\GAME\SimpleGomoku\python\ui\components" />
+      <recent name="D:\AProject\Python\GAME\SimpleGomoku\python\ui" />
     </key>
   </component>
   <component name="RunManager">
@@ -130,6 +129,7 @@
     </option>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/SimpleGomoku$main.coverage" NAME="main 覆盖结果" MODIFIED="1765465918171" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python" />
+    <SUITE FILE_PATH="coverage/SimpleGomoku$main.coverage" NAME="main 覆盖结果" MODIFIED="1765471797859" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python" />
+    <SUITE FILE_PATH="coverage/SimpleGomoku$main_with_mcp.coverage" NAME="main_with_mcp 覆盖结果" MODIFIED="1765471460583" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python" />
   </component>
 </project>

@@ -4,8 +4,8 @@
 """
 from typing import Optional, Callable, List
 from python.models.GameModels import Player, GameState, GameSettings, GameResult, Position
-from python.Board import Board
-from python.Logger import logger
+from python.core.Board import Board
+from python.util.Logger import logger
 
 
 class GameLogic:

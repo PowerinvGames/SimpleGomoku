@@ -23,7 +23,7 @@ class Config:
         # 这里可以添加从配置文件读取的逻辑
         # 例如从resources/config.properties读取
         config_file = os.path.join(os.path.dirname(os.path.dirname(__file__)), 
-                                  "resources", "config.properties")
+                                  "..", "resources", "config.properties")
         
         if os.path.exists(config_file):
             try:
